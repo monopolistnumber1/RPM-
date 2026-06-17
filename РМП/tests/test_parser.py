@@ -62,7 +62,7 @@ class _DummyClient:
         return self._response
 
 
-def test_search_avito_success(monkeypath):
+def test_search_avito_success(monkeypatch):
     payload = {
         "data": [
             {
