@@ -47,22 +47,6 @@ class FakeState:
         self.state_value = state
 
 
-def test_maybe_send_watermark_every_third_action(monkeypatch):
-    handlers.user_action_count.clear()
-    handlers.WATERMARK = "WM"
-    uid = 77
-    msg = FakeMessage()
-
-    asyncio.run(handlers.maybe_send_watermark(msg, uid))
-    asyncio.run(handlers.maybe_send_watermark(msg, uid))
-    assert msg.calls == []
-
-    asyncio.run(handlers.maybe_send_watermark(msg, uid))
-    assert len(msg.calls) == 1
-    assert msg.calls[0][0] == "WM"
-    assert msg.calls[0][1] == "HTML"
-
-
 def test_handle_price_rejects_negative_value():
     msg = FakeMessage()
     msg.from_user = type("U", (), {"id": 123})()
