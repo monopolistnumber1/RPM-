@@ -14,8 +14,6 @@ from parser import search_avito, AvitoListing
 router = Router()
 logger = logging.getLogger(__name__)
 
-WATERMARK = ""
-
 # -- FSM ----------------------------------------------------------------------
 
 class SearchStates(StatesGroup):
